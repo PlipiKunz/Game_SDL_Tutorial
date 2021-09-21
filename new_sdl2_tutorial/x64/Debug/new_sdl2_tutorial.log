@@ -1,13 +1,3 @@
-﻿  CharacterObject.cpp
+﻿  GameObject.cpp
 C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\GameObject.h(13): warning C4091: 'static ': ignored on left of 'GameObject::Direction' when no variable is declared
-  GameObject.cpp
-C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\GameObject.h(13): warning C4091: 'static ': ignored on left of 'GameObject::Direction' when no variable is declared
-C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\GameObject.cpp(73,11): warning C4552: '-': result of expression not used
-  Room.cpp
-C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\GameObject.h(13): warning C4091: 'static ': ignored on left of 'GameObject::Direction' when no variable is declared
-C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\Room.h(21,13): warning C4200: nonstandard extension used: zero-sized array in struct/union
-C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\Room.h(21,13): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
-  main.cpp
-C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\GameObject.h(13): warning C4091: 'static ': ignored on left of 'GameObject::Direction' when no variable is declared
-  Generating Code...
   new_sdl2_tutorial.vcxproj -> C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\x64\Debug\new_sdl2_tutorial.exe
