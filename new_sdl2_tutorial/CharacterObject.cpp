@@ -1,7 +1,7 @@
 #include "CharacterObject.h"
 #include "globals.h"
 
-CharacterObject::CharacterObject(int x, int y, int width, int height) :GameObject::GameObject(x, y, width, height, true) {
+CharacterObject::CharacterObject(int x, int y, int width, int height) :GameObject::GameObject(true, x, y, width, height) {
 
 }
 

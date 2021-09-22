@@ -13,57 +13,81 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\GameObjects">
+      <UniqueIdentifier>{577fcea9-a2b3-44f7-bee6-860019e92504}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects">
+      <UniqueIdentifier>{39c1879a-f027-461f-ade0-9ce1ada8c0f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MiscComponents">
+      <UniqueIdentifier>{e8878ea6-1eb2-42a6-8541-e1d42cdad3e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MiscComponents">
+      <UniqueIdentifier>{e3f0905a-f880-4f63-8cb2-3266c522af2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rooms">
+      <UniqueIdentifier>{696fe818-802e-420f-9cfd-f0a5029cf4bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Rooms">
+      <UniqueIdentifier>{8aada992-7436-4029-8ac9-fb21f1ea7744}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SpriteSheet.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="CharacterObject.h">
+      <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="TextBox.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="globals.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="EnemyA.h">
+      <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="utils.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="LWindow.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\MiscComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteSheet.h">
+      <Filter>Header Files\MiscComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="TextBox.h">
+      <Filter>Header Files\MiscComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.h">
+      <Filter>Header Files\MiscComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="globals.h">
+      <Filter>Header Files\MiscComponents</Filter>
     </ClInclude>
     <ClInclude Include="Room.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterObject.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Rooms</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SpriteSheet.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TextBox.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="utils.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Room.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="EnemyA.cpp">
+      <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="CharacterObject.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="TextBox.cpp">
+      <Filter>Source Files\MiscComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="utils.cpp">
+      <Filter>Source Files\MiscComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteSheet.cpp">
+      <Filter>Source Files\MiscComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="LWindow.cpp">
+      <Filter>Source Files\MiscComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Room.cpp">
+      <Filter>Source Files\Rooms</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

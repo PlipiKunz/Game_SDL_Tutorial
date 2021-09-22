@@ -1,6 +1,8 @@
 #pragma once
-
+#include "SpriteSheet.h"
 #include <SDL.h>
+#include<optional>
+
 
 class GameObject
 {
@@ -12,13 +14,14 @@ public:
 	//the max velocity allowed in any direction
 	static enum Direction { left, down, right, up };
 
-	GameObject(int x = 0, int y = 0, int width = 20, int height = 20, bool collidable = true);
+	GameObject(bool collidable = true, int x = 0, int y = 0, int width = 20, int height = 20);
 
 	void step(const Uint8* currentKeyStates);
 
 	void render(int posX = NULL, int posY = NULL);
 
 	void setPos(int x, int y);
+	void setSpriteSheet(SpriteSheet* sS, bool useRect = false, SDL_Rect* sR = NULL);
 
 	int getID() { return this->id; };
 	int getX() { return this->mPosX; };
@@ -43,5 +46,10 @@ protected:
 	void handleKeyPresses(const Uint8* currentKeyStates);
 	void setRectAndDimenions();
 	void move();
+
+	SpriteSheet* mSpriteSheet;
+
+	bool usingSpriteRect = false;
+	SDL_Rect mSpriteSheetRect;
 };
 

@@ -1,23 +1,35 @@
 #pragma once
 
 #include <SDL.h>
-#include "globals.h"
+#include <map>
+#include <string>
+
 #include "GameObject.h"
+#include "SpriteSheet.h"
 
 class Room
 {
 public:
 	Room();
 
-	bool init();
-	void close();
+	bool load();
+	bool loadMedia();
+	bool loadObjects();
+
+	void free();
 
 	void step(const Uint8* currentKeyStates);
+
 	void render();
+
+	int getRoomWidth() { return mWidth; }
+	int getRoomHeight() { return mHeight; }
 
 private:
 	int mWidth;
 	int mHeight;
-	GameObject mMovables[];
+
+	std::map<string, GameObject*> mGameObjects = {};
+	std::map<string, SpriteSheet*> mSpriteSheets = {};
 };
 

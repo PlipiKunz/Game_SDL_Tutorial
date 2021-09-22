@@ -4,7 +4,7 @@
 
 int GameObject::next_ID = 0;
 
-GameObject::GameObject(int x, int y, int width, int height, bool collidable) {
+GameObject::GameObject(bool collidable, int x, int y, int width, int height) {
 	mDirection = down;
 
 	mVelocity[0] = 0;
@@ -21,6 +21,7 @@ GameObject::GameObject(int x, int y, int width, int height, bool collidable) {
 	next_ID += 1;
 	setRectAndDimenions();
 }
+
 void GameObject::step(const Uint8* currentKeyStates) {
 	handleKeyPresses(currentKeyStates);
 	move();
@@ -52,18 +53,36 @@ void GameObject::setPos(int x, int y) {
 	setRectAndDimenions();
 }
 
-void GameObject::setRectAndDimenions() {
-	mRect = { mPosX, mPosY, mWidth, mHeight };
+void GameObject::setSpriteSheet(SpriteSheet* ss, bool useRect, SDL_Rect* sR) {
+	mSpriteSheet = ss;
 
+	if (useRect) {
+		usingSpriteRect = true;
+		mSpriteSheetRect = *sR;
+	}
+	setRectAndDimenions();
+}
+
+void GameObject::setRectAndDimenions() {
+
+	if (mSpriteSheet) {
+		if (usingSpriteRect) {
+			mWidth = mSpriteSheetRect.w;
+			mHeight = mSpriteSheetRect.h;
+		}
+		else {
+			mWidth = mSpriteSheet->getWidth();
+			mHeight = mSpriteSheet->getHeight();
+		}
+	}
+
+	mRect = { mPosX, mPosY, mWidth, mHeight };
 	if (mCollidable) {
 		pageRects[id] = mRect;
 	}
 }
 
 void GameObject::render(int posX, int posY) {
-
-	SDL_SetRenderDrawColor(gRenderer, 0xFF, 0x00, 0xFF, 0xFF);
-
 	int drawAtX;
 	int drawAtY;
 
@@ -74,8 +93,23 @@ void GameObject::render(int posX, int posY) {
 	else {
 		drawAtX = mRect.x;
 		drawAtY = mRect.y;
+
+		drawAtX = drawAtX - camX;
+		drawAtY = drawAtY - camY;
 	}
 
-	SDL_Rect adjustedRect = { drawAtX - camX, drawAtY - camY, mRect.w, mRect.h };
-	SDL_RenderFillRect(gRenderer, &adjustedRect);
+
+	if (mSpriteSheet) {
+		if (usingSpriteRect) {
+			mSpriteSheet->render(drawAtX, drawAtY, &mSpriteSheetRect);
+		}
+		else {
+			mSpriteSheet->render(drawAtX, drawAtY);
+		}
+	}
+	else {
+		SDL_SetRenderDrawColor(gRenderer, 0xFF, 0x00, 0xFF, 0xFF);
+		SDL_Rect adjustedRect = { drawAtX, drawAtY, mRect.w, mRect.h };
+		SDL_RenderFillRect(gRenderer, &adjustedRect);
+	}
 }
