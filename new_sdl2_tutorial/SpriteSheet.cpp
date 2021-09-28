@@ -3,9 +3,11 @@
 #include "SpriteSheet.h"
 #include "globals.h"
 
+#include <iostream>
+
 //Initializer
 SpriteSheet::SpriteSheet() {
-	mTexture = NULL;
+	mTexture = nullptr;
 	mWidth = 0;
 	mHeight = 0;
 }
@@ -51,13 +53,14 @@ bool SpriteSheet::loadFromFile(std::string path) {
 
 //de-allocate current texture
 void SpriteSheet::free() {
-
 	//Free texture if it exists
-	if (mTexture != NULL) {
-		SDL_DestroyTexture(mTexture);
-		mTexture = NULL;
-		mWidth = 0;
-		mHeight = 0;
+	if (this != nullptr) {
+		if (mTexture != nullptr) {
+			SDL_DestroyTexture(mTexture);
+			mTexture = nullptr;
+			mWidth = 0;
+			mHeight = 0;
+		}
 	}
 
 }
@@ -72,11 +75,11 @@ void SpriteSheet::setBlendMode(SDL_BlendMode bm) {
 	SDL_SetTextureAlphaMod(mTexture, bm);
 }
 
-//renders texture
 void SpriteSheet::render(int x, int y, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip) {
+	//renders texture
 	SDL_Rect renderQuad = { x, y, mWidth, mHeight };
 
-	if (clip != NULL) {
+	if (clip != nullptr) {
 		renderQuad.w = clip->w;
 		renderQuad.h = clip->h;
 	}

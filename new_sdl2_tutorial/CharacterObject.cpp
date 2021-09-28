@@ -21,7 +21,7 @@ void CharacterObject::handleKeyPresses(const Uint8* currentKeyStates) {
 		mVelocity[0] -= MAX_VELOCITY;
 
 		if (!keepDirection) {
-			Direction direction = left;
+			Direction direction = Direction::left;
 			mDirection = direction;
 			if (prevDirection == direction) {
 				keepDirection = true;
@@ -32,7 +32,7 @@ void CharacterObject::handleKeyPresses(const Uint8* currentKeyStates) {
 		mVelocity[0] += MAX_VELOCITY;
 
 		if (!keepDirection) {
-			Direction direction = right;
+			Direction direction = Direction::right;
 			mDirection = direction;
 			if (prevDirection == direction) {
 				keepDirection = true;
@@ -43,7 +43,7 @@ void CharacterObject::handleKeyPresses(const Uint8* currentKeyStates) {
 		mVelocity[1] += MAX_VELOCITY;
 
 		if (!keepDirection) {
-			Direction direction = down;
+			Direction direction = Direction::down;
 			mDirection = direction;
 			if (prevDirection == direction) {
 				keepDirection = true;
@@ -54,7 +54,7 @@ void CharacterObject::handleKeyPresses(const Uint8* currentKeyStates) {
 		mVelocity[1] -= MAX_VELOCITY;
 
 		if (!keepDirection) {
-			Direction direction = up;
+			Direction direction = Direction::up;
 			mDirection = direction;
 			if (prevDirection == direction) {
 				keepDirection = true;
@@ -64,16 +64,16 @@ void CharacterObject::handleKeyPresses(const Uint8* currentKeyStates) {
 }
 
 void CharacterObject::render() {
-	if (mDirection == left) {
+	if (mDirection == Direction::left) {
 		SDL_SetRenderDrawColor(gRenderer, 0xFF, 0x00, 0x00, 0xFF);
 	}
-	if (mDirection == right) {
+	if (mDirection == Direction::right) {
 		SDL_SetRenderDrawColor(gRenderer, 0x00, 0xFF, 0x00, 0xFF);
 	}
-	if (mDirection == down) {
+	if (mDirection == Direction::down) {
 		SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0xFF, 0xFF);
 	}
-	if (mDirection == up) {
+	if (mDirection == Direction::up) {
 		SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 	}
 

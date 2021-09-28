@@ -2,11 +2,18 @@
 #include "EnemyA.h"
 #include "globals.h"
 
+#include <iostream>
+
 Room::Room() {
 	ROOM_WIDTH = mWidth = SCREEN_WIDTH * 2;
 	ROOM_HEIGHT = mHeight = SCREEN_HEIGHT * 2;
 }
 
+Room::~Room() {
+	if (this != nullptr) {
+		free();
+	}
+}
 
 bool Room::load() {
 	mainCharacter.setPos(0, 0);
@@ -127,10 +134,12 @@ bool Room::loadObjects() {
 void Room::free() {
 	for (auto x : mSpriteSheets) {
 		x.second->free();
-		mSpriteSheets[x.first] = NULL;
+		mSpriteSheets[x.first] = nullptr;
+
 	}
+
 	for (auto x : mGameObjects) {
-		mGameObjects[x.first] = NULL;
+		mGameObjects[x.first] = nullptr;
 	}
 }
 
@@ -157,6 +166,8 @@ void Room::step(const Uint8* currentKeyStates) {
 }
 
 void Room::render() {
+	//renders the various objects
+
 	if (mSpriteSheets.find("Background") != mSpriteSheets.end()) {
 		mSpriteSheets["Background"]->render(0, 0);
 	}

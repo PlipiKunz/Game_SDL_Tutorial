@@ -1,23 +1,29 @@
 #include "TextBox.h"
 
 TextBox::TextBox() {
+	defaultTextFont = nullptr;
 }
 
 TextBox::~TextBox() {
 	free();
 }
 
-bool TextBox::loadText(std::string textureText, TTF_Font* textFont, SDL_Color textColor) {
+void TextBox::setFont(TTF_Font* textFont) {
+	defaultTextFont = textFont;
+}
+
+bool TextBox::loadText(std::string textureText) {
 	free();
 
-	SDL_Surface* textSurface = TTF_RenderText_Blended_Wrapped(textFont, textureText.c_str(), textColor, SCREEN_WIDTH);
-	if (textSurface == NULL) {
+	SDL_Surface* textSurface = TTF_RenderText_Blended_Wrapped(defaultTextFont, textureText.c_str(), { 0,0,0 }, SCREEN_WIDTH);
+
+	if (textSurface == nullptr) {
 		printf("unable to render text surface! SDL_tff Error: %s\n", TTF_GetError());
 	}
 	else {
 		mTexture = SDL_CreateTextureFromSurface(gRenderer, textSurface);
-		if (mTexture == NULL) {
-			printf("Unable to create textuer from rendered text! SDL Error: %s\n", SDL_GetError());
+		if (mTexture == nullptr) {
+			printf("Unable to create texture from rendered text! SDL Error: %s\n", SDL_GetError());
 		}
 		else {
 			mWidth = textSurface->w;
@@ -27,7 +33,7 @@ bool TextBox::loadText(std::string textureText, TTF_Font* textFont, SDL_Color te
 		SDL_FreeSurface(textSurface);
 	}
 
-	return mTexture != NULL;
+	return mTexture != nullptr;
 }
 
 void TextBox::Render(SDL_Rect* clip) {
@@ -37,7 +43,7 @@ void TextBox::Render(SDL_Rect* clip) {
 
 	SDL_Rect renderQuad = { x, y, mWidth, mHeight };
 
-	if (clip != NULL) {
+	if (clip != nullptr) {
 		renderQuad.w = clip->w;
 		renderQuad.h = clip->h;
 	}
@@ -46,9 +52,9 @@ void TextBox::Render(SDL_Rect* clip) {
 }
 
 void TextBox::free() {
-	if (mTexture != NULL) {
+	if (mTexture != nullptr) {
 		SDL_DestroyTexture(mTexture);
-		mTexture = NULL;
+		mTexture = nullptr;
 	}
 }
 

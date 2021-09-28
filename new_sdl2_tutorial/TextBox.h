@@ -13,7 +13,12 @@ public:
 	TextBox();
 	~TextBox();
 
-	bool loadText(std::string textureText, TTF_Font* textFont, SDL_Color textColor);
+	void setFont(TTF_Font* textFont);
+
+	bool loadText(std::string textureText);
+
+	void step() {
+	}
 
 	void Render(SDL_Rect* clip = NULL);
 
@@ -23,5 +28,12 @@ private:
 	SDL_Texture* mTexture;
 	int mWidth;
 	int mHeight;
+
+
+	int lines;
+	int maxWidth;
+	int maxHeight;
+
+	TTF_Font* defaultTextFont;
 };
 

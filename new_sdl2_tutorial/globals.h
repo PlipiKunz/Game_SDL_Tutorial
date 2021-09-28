@@ -11,20 +11,25 @@
 extern const int SCREEN_WIDTH;
 extern const int SCREEN_HEIGHT;
 
+//The game state
+extern GameStates GAME_STATE;
 
-extern CharacterObject mainCharacter;
-
-//extern int ROOM_NUMBER;
-extern Room CURRENT_ROOM;
-extern int ROOM_WIDTH;
-extern int ROOM_HEIGHT;
-
-extern int camX;
-extern int camY;
-
+//The renderer and window global objects
 extern LWindow gWindow;
 extern SDL_Renderer* gRenderer;
 
-extern TTF_Font* gFont;
-
+//A mapping of collision rects from the id of their game object
 extern std::map<int, SDL_Rect> pageRects;
+
+//The room variables
+extern Room CURRENT_ROOM;
+extern int ROOM_WIDTH;
+extern int ROOM_HEIGHT;
+extern int ROOM_NUMBER;
+
+//The camera coordinates
+extern int camX;
+extern int camY;
+
+//The main characters object
+extern CharacterObject mainCharacter;

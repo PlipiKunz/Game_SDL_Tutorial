@@ -6,7 +6,7 @@
 
 LWindow::LWindow()
 {
-	mWindow = NULL;
+	mWindow = nullptr;
 	mMouseFocus = false;
 	mKeyboardFocus = false;
 	mFullScreen = false;
@@ -17,15 +17,16 @@ LWindow::LWindow()
 
 bool LWindow::init()
 {
+	//Creates a resizable window
 	mWindow = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
-	if (mWindow != NULL)
+	if (mWindow != nullptr)
 	{
 		mMouseFocus = true;
 		mKeyboardFocus = true;
 		mWidth = SCREEN_WIDTH;
 		mHeight = SCREEN_HEIGHT;
 	}
-	return  mWindow != NULL;
+	return  mWindow != nullptr;
 }
 
 SDL_Renderer* LWindow::createRenderer() {
@@ -38,13 +39,6 @@ void LWindow::handleEvent(SDL_Event& e) {
 	if (e.type == SDL_WINDOWEVENT) {
 		bool focusChange = false;
 		switch (e.window.event) {
-		case SDL_WINDOWEVENT_SIZE_CHANGED:
-			/*mWidth = e.window.data1;
-			mHeight = e.window.data2;
-
-			SDL_RenderPresent(gRenderer);*/
-			break;
-
 		case SDL_WINDOWEVENT_EXPOSED:
 			SDL_RenderPresent(gRenderer);
 			break;
@@ -68,7 +62,6 @@ void LWindow::handleEvent(SDL_Event& e) {
 			mKeyboardFocus = false;
 			focusChange = true;
 			break;
-
 		case SDL_WINDOWEVENT_MINIMIZED:
 			mMinimized = true;
 			break;
@@ -92,5 +85,5 @@ void LWindow::handleEvent(SDL_Event& e) {
 
 void LWindow::free() {
 	SDL_DestroyWindow(mWindow);
-	mWindow = NULL;
+	mWindow = nullptr;
 }

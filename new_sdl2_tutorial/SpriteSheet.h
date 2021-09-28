@@ -30,9 +30,10 @@ public:
 	int getHeight();
 
 private:
-	//The actual texture
+	//The loaded image
 	SDL_Texture* mTexture;
 
+	//The width and height of the whole sprite sheet
 	int mWidth;
 	int mHeight;
 };

@@ -1,4 +1,38 @@
-﻿  Room.cpp
+﻿  CharacterObject.cpp
+C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\utils.h(7,54): warning C4091: 'static ': ignored on left of 'Direction' when no variable is declared
+C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\utils.h(8,50): warning C4091: 'static ': ignored on left of 'GameStates' when no variable is declared
   The contents of <optional> are available only with C++17 or later.
-C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\GameObject.h(15): warning C4091: 'static ': ignored on left of 'GameObject::Direction' when no variable is declared
+  EnemyA.cpp
+C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\utils.h(7,54): warning C4091: 'static ': ignored on left of 'Direction' when no variable is declared
+C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\utils.h(8,50): warning C4091: 'static ': ignored on left of 'GameStates' when no variable is declared
+  The contents of <optional> are available only with C++17 or later.
+  GameObject.cpp
+C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\utils.h(7,54): warning C4091: 'static ': ignored on left of 'Direction' when no variable is declared
+C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\utils.h(8,50): warning C4091: 'static ': ignored on left of 'GameStates' when no variable is declared
+  The contents of <optional> are available only with C++17 or later.
+  LWindow.cpp
+C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\utils.h(7,54): warning C4091: 'static ': ignored on left of 'Direction' when no variable is declared
+C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\utils.h(8,50): warning C4091: 'static ': ignored on left of 'GameStates' when no variable is declared
+  The contents of <optional> are available only with C++17 or later.
+  Room.cpp
+C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\utils.h(7,54): warning C4091: 'static ': ignored on left of 'Direction' when no variable is declared
+C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\utils.h(8,50): warning C4091: 'static ': ignored on left of 'GameStates' when no variable is declared
+  The contents of <optional> are available only with C++17 or later.
+  SpriteSheet.cpp
+C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\utils.h(7,54): warning C4091: 'static ': ignored on left of 'Direction' when no variable is declared
+C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\utils.h(8,50): warning C4091: 'static ': ignored on left of 'GameStates' when no variable is declared
+  The contents of <optional> are available only with C++17 or later.
+  TextBox.cpp
+C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\utils.h(7,54): warning C4091: 'static ': ignored on left of 'Direction' when no variable is declared
+C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\utils.h(8,50): warning C4091: 'static ': ignored on left of 'GameStates' when no variable is declared
+  The contents of <optional> are available only with C++17 or later.
+  main.cpp
+C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\utils.h(7,54): warning C4091: 'static ': ignored on left of 'Direction' when no variable is declared
+C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\utils.h(8,50): warning C4091: 'static ': ignored on left of 'GameStates' when no variable is declared
+  The contents of <optional> are available only with C++17 or later.
+  utils.cpp
+C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\utils.h(7,54): warning C4091: 'static ': ignored on left of 'Direction' when no variable is declared
+C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\new_sdl2_tutorial\utils.h(8,50): warning C4091: 'static ': ignored on left of 'GameStates' when no variable is declared
+  The contents of <optional> are available only with C++17 or later.
+  Generating Code...
   new_sdl2_tutorial.vcxproj -> C:\Users\User\ActualWork\Tutorials\new_sdl2_tutorial\x64\Debug\new_sdl2_tutorial.exe

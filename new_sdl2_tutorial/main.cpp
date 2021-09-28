@@ -12,27 +12,26 @@
 #include "GameObject.h"
 #include "CharacterObject.h"
 #include "LWindow.h"
+#include "utils.h"
 #include "EnemyA.h"
 
 //Tutorial: https://lazyfoo.net/tutorials/SDL/index.php
 
-//True Global variable declaractions any file can access
+//True Global variable declaractions any file can access by importing globals
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 
+GameStates GAME_STATE = GameStates::normal;
 
 LWindow gWindow = LWindow();
-SDL_Renderer* gRenderer = NULL;
-TTF_Font* gFont = NULL;
+SDL_Renderer* gRenderer = nullptr;
+
 std::map<int, SDL_Rect> pageRects = {};
 
-TextBox gTextBox;
-
-
+Room CURRENT_ROOM = Room();
 int ROOM_WIDTH = 0;
 int ROOM_HEIGHT = 0;
 int ROOM_NUMBER = 0;
-Room CURRENT_ROOM = Room();
 
 int camX = 0;
 int camY = 0;
@@ -40,7 +39,10 @@ int camY = 0;
 CharacterObject mainCharacter = CharacterObject();
 
 
-//Local global variable declarations for this file to access
+//Local global definitions
+TTF_Font* gFont = nullptr;
+TextBox gTextBox;
+
 
 bool init()
 {
@@ -100,25 +102,38 @@ bool init()
 	return success;
 }
 
-bool loadMedia()
-{
-	CURRENT_ROOM = Room();
+bool loadRoom(int room_number) {
+	//sets the room number
+	ROOM_NUMBER = room_number;
+
+	//the if branch for rooms
+	if (room_number == 0) {
+		CURRENT_ROOM = Room();
+	}
+
+	//updates the room width and heights
 	ROOM_WIDTH = CURRENT_ROOM.getRoomWidth();
 	ROOM_HEIGHT = CURRENT_ROOM.getRoomHeight();
 
-	bool success = true;
-	success = CURRENT_ROOM.load();
+	//tries to load the room and returns the result
+	return CURRENT_ROOM.load();
+}
 
+bool loadMedia()
+{
+	//sets success to be the result of room loading
+	bool success = loadRoom(0);
 
 	//Load the textbox
 	gFont = TTF_OpenFont("Fonts/lazy.ttf", 28);
-	if (gFont == NULL) {
+	if (gFont == nullptr) {
 		printf("Failed to load lazy font! SDL_ttf Error %s\n", TTF_GetError());
 		success = false;
 	}
 	else {
-		SDL_Color textColor = { 0,0,0 };
-		if (!gTextBox.loadText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam iaculis quis erat eu hendrerit. Nam eu vulputate ligula, id fermentum tortor. Aliquam molestie ornare fringilla. Quisque posuere sit amet purus a eleifend. Donec dapibus tempor pretium. Nam elementum vulputate ipsum tempus aliquam. Proin laoreet enim sit amet leo mollis convallis ut non elit. Aliquam elementum libero tellus, at pretium purus scelerisque sed.", gFont, textColor)) {
+		//sets the font and loads some text into the textbox
+		gTextBox.setFont(gFont);
+		if (!gTextBox.loadText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam iaculis quis erat eu hendrerit. Nam eu vulputate ligula, id fermentum tortor. Aliquam molestie ornare fringilla. Quisque posuere sit amet purus a eleifend. Donec dapibus tempor pretium. Nam elementum vulputate ipsum tempus aliquam. Proin laoreet enim sit amet leo mollis convallis ut non elit. Aliquam elementum libero tellus, at pretium purus scelerisque sed.")) {
 			printf("Failed to render text texture!\n");
 			success = false;
 		}
@@ -135,17 +150,45 @@ void close()
 
 	//cleanup font
 	TTF_CloseFont(gFont);
-	gFont = NULL;
+	gFont = nullptr;
 
 	//Destroy window    
 	gWindow.free();
 	SDL_DestroyRenderer(gRenderer);
-	gRenderer = NULL;
+	gRenderer = nullptr;
 
 	//Quit SDL subsystems
 	TTF_Quit();
 	IMG_Quit();
 	SDL_Quit();
+}
+
+void step(const Uint8* currentKeyStates) {
+
+	if (GAME_STATE == GameStates::normal) {
+		CURRENT_ROOM.step(currentKeyStates);
+	}
+	else if (GAME_STATE == GameStates::text_box) {
+
+	}
+}
+
+void render() {
+	//Clear screen
+	SDL_SetRenderDrawColor(gRenderer, 0xff, 0xff, 0xff, 0xff);
+	SDL_RenderClear(gRenderer);
+
+
+	if (GAME_STATE == GameStates::normal) {
+		CURRENT_ROOM.render();
+	}
+	else if (GAME_STATE == GameStates::text_box) {
+		CURRENT_ROOM.render();
+		gTextBox.Render();
+	}
+
+	//Update screen
+	SDL_RenderPresent(gRenderer);
 }
 
 int main(int argc, char* args[])
@@ -176,33 +219,13 @@ int main(int argc, char* args[])
 
 		if (!gWindow.isMinimized()) {
 			const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
-			/*if (currentKeyStates[SDL_SCANCODE_Q]) {
-				foregroundAlpha = min(255, foregroundAlpha + 32);
-			}
-			else if (currentKeyStates[SDL_SCANCODE_A]) {
-				foregroundAlpha = max(0, foregroundAlpha - 32);
-			}*/
 
-
-			CURRENT_ROOM.step(currentKeyStates);
-
-
-			//Clear screen
-			SDL_SetRenderDrawColor(gRenderer, 0xff, 0xff, 0xff, 0xff);
-			SDL_RenderClear(gRenderer);
-
-			CURRENT_ROOM.render();
-
-			//gTextBox.Render
-
-
-			//Update screen
-			SDL_RenderPresent(gRenderer);
+			step(currentKeyStates);
+			render();
 		}
 	}
 
 	//Free resources and close SDL
 	close();
-
 	return 0;
 }

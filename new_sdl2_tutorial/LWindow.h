@@ -25,9 +25,11 @@ public:
 private:
 	SDL_Window* mWindow;
 
+	//the width and height of the window
 	int mWidth;
 	int mHeight;
 
+	//various tracked window properties
 	bool mMouseFocus;
 	bool mKeyboardFocus;
 	bool mFullScreen;

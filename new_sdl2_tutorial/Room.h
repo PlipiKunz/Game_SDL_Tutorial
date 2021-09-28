@@ -11,6 +11,7 @@ class Room
 {
 public:
 	Room();
+	~Room();
 
 	bool load();
 	bool loadMedia();
@@ -26,10 +27,13 @@ public:
 	int getRoomHeight() { return mHeight; }
 
 private:
+	//the rooms dimensions
 	int mWidth;
 	int mHeight;
 
+	//a map of game objects indexed into using the name
 	std::map<string, GameObject*> mGameObjects = {};
+	//a map of spritesheets indexed into using the name
 	std::map<string, SpriteSheet*> mSpriteSheets = {};
 };
 
